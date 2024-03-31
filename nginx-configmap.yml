@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config
+data:
+  nginx.cfg: |
+    server {
+      location / {
+        proxy_pass http://backend;
+      }
+    }
+
+    upstream backend {
+      server 10.109.209.219:8080;
+      server 10.104.73.246:8080;
+    }
